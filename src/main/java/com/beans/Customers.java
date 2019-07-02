@@ -1,55 +1,71 @@
 
 package com.beans;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 public class Customers {
 	
-	@Column(name="UserID")
+	@Id
+	@Column(name="CIS")
 	@SequenceGenerator(sequenceName="CIS_SEQ", name="CIS_SEQ", allocationSize=1)
 	@GeneratedValue(generator="CIS_SEQ", strategy=GenerationType.SEQUENCE)
 	private Integer CIS;
+	
+	@Column(name="FirstName")
 	private String FirstName;
+	
+	@Column(name="LastName")
 	private String LastName;
+	
+	@Column(name="UserName")
 	private String UserName;
+	
+	@Column(name="Password")
 	private String Password;
+	
+	@Column(name="UserType")
+	private String UserType;
+	
+	@Column(name="SSN")
 	private Integer SSN;
+	
+	@Column(name="Phone")
 	private String Phone;
+	
+	@Column(name="Email")
 	private String Email;
+	
+	@Column(name="Address")
+	private String Address;
+	
+	@Column(name="DOB")
 	private String DOB;
 	
-	public Customers(Integer cis, String firstName, String lastName, String userName, String password, Integer ssn, String phone, String email, String dob) {
+	public Customers(Integer cis, String firstName, String lastName, String userName, String password, String userType, Integer ssn, 
+			String phone, String email, String address, String dob) {
 		super();
 		CIS = cis;
 		FirstName = firstName;
 		LastName = lastName;
 		UserName = userName;
 		Password = password;
+		UserType = userType;
 		SSN = ssn;
 		Phone = phone;
 		Email = email;
+		Address = address;
 		DOB = dob;
 	}
-	
-	
-	@Override
-	public String toString() {
-		return "Customers [CIS=" + CIS + ", FirstName=" + FirstName + ", LastName=" + LastName + ", UserName="
-				+ UserName + ", Password=" + Password + ", SSN=" + SSN + ", Phone=" + Phone + ", Email=" + Email
-				+ ", DOB=" + DOB + "]";
-	}
 
-	
 	public int getCIS() {
 		return CIS;
 	}
-	public void setCIS(int cIS) {
-		CIS = cIS;
+	public void setCIS(Integer cis) {
+		CIS = cis;
 	}
 	public String getFirstName() {
 		return FirstName;
@@ -75,11 +91,19 @@ public class Customers {
 	public void setPassword(String password) {
 		Password = password;
 	}
+	
+	public String getUserType() {
+		return UserType;
+	}
+	
+	public void setUserType(String userType) {
+		UserType = userType;
+	}
 	public int getSSN() {
 		return SSN;
 	}
-	public void setSSN(int sSN) {
-		SSN = sSN;
+	public void setSSN(Integer ssn) {
+		SSN = ssn;
 	}
 	public String getPhone() {
 		return Phone;
@@ -93,13 +117,27 @@ public class Customers {
 	public void setEmail(String email) {
 		Email = email;
 	}
+	
+	public String getAddress() {
+		return Address;
+	}
+	public void setAddress(String address) {
+		Address = address;
+	}
 	public String getDOB() {
 		return DOB;
 	}
-	public void setDOB(String dOB) {
-		DOB = dOB;
+	public void setDOB(String dob) {
+		DOB = dob;
 	}
 	
+	
+	@Override
+	public String toString() {
+		return "Customers [CIS=" + CIS + ", FirstName=" + FirstName + ", LastName=" + LastName + ", UserName="
+				+ UserName + ", Password=" + Password + ", UserType=" + UserType + ", SSN=" + SSN + ", Phone=" + Phone
+				+ ", Email=" + Email + ", Address=" + Address + ", DOB=" + DOB + "]";
+	}
 	
 	
 }
