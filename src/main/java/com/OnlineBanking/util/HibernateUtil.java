@@ -1,5 +1,5 @@
 
-package com.util;
+package com.OnlineBanking.util;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

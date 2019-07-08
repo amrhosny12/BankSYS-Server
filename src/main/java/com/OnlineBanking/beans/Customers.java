@@ -1,5 +1,5 @@
 
-package com.beans;
+package com.OnlineBanking.beans;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
