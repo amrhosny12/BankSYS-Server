@@ -8,6 +8,7 @@ import com.OnlineBanking.beans.Customers;
 import com.OnlineBanking.util.HibernateUtil;
 
 public class CustomerDao {
+	
 
 	public void insertCustomer(Customers cust) {
 		
@@ -75,16 +76,38 @@ public class CustomerDao {
 				tx.rollback();
 			}
 			e.printStackTrace();
-		
+			
 		}finally {
 			session.close();
 		}
-		
 		return cust;
 		
 	}
 		
 
+	public Customers getCustBySSN(Integer ssn) {
+		
+		Customers cust = null;
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		
+		try {
+			tx = session.beginTransaction();
+			
+			cust = (Customers)session.get(Customers.class, ssn);
+			tx.commit();
+			
+		}catch(HibernateException e) {
+			if(tx!=null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+			
+		}finally {
+			session.close();
+		}
+		return cust;
+	}
 	
 	
 	

@@ -60,6 +60,23 @@ public class Customers {
 		Address = address;
 		DOB = dob;
 	}
+	
+	
+
+	public Customers(String firstName, String lastName, String userName, String password, String userType, Integer ssn,
+			String phone, String email) {
+		super();
+		FirstName = firstName;
+		LastName = lastName;
+		UserName = userName;
+		Password = password;
+		UserType = userType;
+		SSN = ssn;
+		Phone = phone;
+		Email = email;
+	}
+
+
 
 	public int getCIS() {
 		return CIS;
