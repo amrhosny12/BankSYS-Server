@@ -1,5 +1,7 @@
 package com.OnlineBanking.dao;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -110,7 +112,32 @@ public class CustomerDao {
 	}
 	
 	
-	
+	public Integer loginCust(String userName, String pw) {
+		
+		List <Customers> AllCust  = null;
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		
+		try {
+			tx = session.beginTransaction();
+			AllCust = session.createQuery("FROM CUSTOMERS").list();
+			
+			for(Customers cust : AllCust) {
+				if(cust.getUserName().equals(userName) && cust.getPassword().equals(pw))
+					return cust.getCIS();
+			}
+			
+		}catch(HibernateException e) {
+			if (tx!=null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		
+		}finally {
+			session.close();
+		}
+		return null;
+	}
 	
 	
 	
