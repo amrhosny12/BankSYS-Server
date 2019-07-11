@@ -1,5 +1,7 @@
 package com.OnlineBanking.services;
 
+import java.util.List;
+
 import com.OnlineBanking.beans.Customers;
 import com.OnlineBanking.dao.CustomerDao;
 
@@ -43,8 +45,16 @@ public class CustomerService {
 	}
 	
 	
+	public static List<Customers> getAllCust(){
+		CustomerDao dao = new CustomerDao();
+		return dao.getAllCust();
+		
+	}
 	
-	
+	public static Customers getCustBySSN (Integer ssn) {
+		CustomerDao dao = new CustomerDao();
+		return dao.getCustBySSN(ssn);
+	}
 	
 	
 }

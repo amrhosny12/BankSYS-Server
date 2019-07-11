@@ -114,7 +114,7 @@ public class CustomerDao {
 	
 	public Integer loginCust(String userName, String pw) {
 		
-		List <Customers> AllCust  = null;
+		List <Customers> AllCust = null;
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		
@@ -140,7 +140,29 @@ public class CustomerDao {
 	}
 	
 	
-	
+	public List<Customers> getAllCust(){
+		
+		List<Customers> AllCust = null;
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		
+		try{
+			tx = session.beginTransaction();
+			AllCust = session.createQuery("FROM CUSTOMERS").list();
+			return AllCust;
+		
+		}catch(HibernateException e) {
+			if(tx!=null){
+				tx.rollback();
+			}
+			e.printStackTrace();
+		
+		}finally {
+			session.close();
+		}
+		
+		return null;
+	}
 	
 	
 	
