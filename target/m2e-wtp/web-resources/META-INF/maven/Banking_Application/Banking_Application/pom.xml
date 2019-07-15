@@ -34,19 +34,19 @@
 			    <scope>provided</scope>
 			</dependency>
 			
-		<!--<dependency>
+		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc7</artifactId>
 			<version>12.1.0</version>
-		</dependency>  -->
+		</dependency> 
 		
-		<dependency>
+		<!-- <dependency>
 		    <groupId>com.oracle</groupId>
 		    <artifactId>ojdbc7</artifactId>
 		    <version>12.1.0</version>
 		    <scope>system</scope>
 		    <systemPath>/Users/Mada_Soka24/Documents/Full-Stack Apps/Banking_Application/lib/ojdbc7.jar</systemPath>
-	  	</dependency>
+	  	</dependency> -->
 		
 		<dependency>
 			<groupId>org.hibernate</groupId>
