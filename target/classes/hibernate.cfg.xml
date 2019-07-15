@@ -39,11 +39,11 @@
 		
 		
 		<!-- <mapping resource="cbay.hbm.xml"/> -->
-		<mapping class="com.OnlineBanking.Customers"/>
-		<mapping class="com.OnlineBanking.Accounts"/>
-		<mapping class="com.OnlineBanking.Transactions"/>
-		<mapping class="com.OnlineBanking.Alerts"/>
-		<mapping class="com.OnlineBanking.RSA"/>
+		<mapping class="com.OnlineBanking.beans.Customers"/>
+		<mapping class="com.OnlineBanking.beans.Accounts"/>
+		<mapping class="com.OnlineBanking.beans.Transactions"/>
+		<mapping class="com.OnlineBanking.beans.Alerts"/>
+		<mapping class="com.OnlineBanking.beans.RSA"/>
 	
 		
 	</session-factory>
