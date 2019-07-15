@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.OnlineBanking.beans.Customers;
@@ -14,7 +15,8 @@ public class CustomerDao {
 
 	public void insertCustomer(Customers cust) {
 		
-		Session session = HibernateUtil.getSession();
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.openSession();
 		Transaction tx = null;
 		
 		try {
@@ -39,7 +41,8 @@ public class CustomerDao {
 	public Customers getCustByCIS(Integer CIS) {
 		
 		Customers cust = null;
-		Session session = HibernateUtil.getSession();
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.openSession();
 		Transaction tx = null;
 		
 		try {
@@ -64,7 +67,8 @@ public class CustomerDao {
 	public Customers getCustByUserId(String userId) {
 		
 		Customers cust = null;
-		Session session = HibernateUtil.getSession();
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.openSession();
 		Transaction tx = null;
 		
 		try {
@@ -90,7 +94,8 @@ public class CustomerDao {
 	public Customers getCustBySSN(Integer ssn) {
 		
 		Customers cust = null;
-		Session session = HibernateUtil.getSession();
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.openSession();
 		Transaction tx = null;
 		
 		try {
@@ -115,7 +120,8 @@ public class CustomerDao {
 	public Integer loginCust(String userName, String pw) {
 		
 		List <Customers> AllCust = null;
-		Session session = HibernateUtil.getSession();
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.openSession();
 		Transaction tx = null;
 		
 		try {
@@ -143,7 +149,8 @@ public class CustomerDao {
 	public List<Customers> getAllCust(){
 		
 		List<Customers> AllCust = null;
-		Session session = HibernateUtil.getSession();
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.openSession();
 		Transaction tx = null;
 		
 		try{
