@@ -7,7 +7,7 @@ import com.OnlineBanking.dao.CustomerDao;
 
 public class CustomerService {
 
-	public Integer createCustRT(String userName, String pw, String fn, String ln, Integer ssn, String phone, String email) {
+	public static Integer insertCustRT(String userName, String pw, String fn, String ln, Integer ssn, String phone, String email) {
 		
 		CustomerDao dao = new CustomerDao();
 		Customers cust = new Customers(fn, ln, userName, pw, "Retail", ssn, phone, email);
@@ -20,7 +20,7 @@ public class CustomerService {
 
 	}
 	
-	public Integer createCustSB(String userName, String pw, String fn, String ln, Integer ssn, String phone, String email) {
+	public static Integer insertCustSB(String userName, String pw, String fn, String ln, Integer ssn, String phone, String email) {
 		
 		CustomerDao dao = new CustomerDao();
 		Customers cust = new Customers(fn, ln, userName, pw, "SB", ssn, phone, email);
@@ -32,7 +32,7 @@ public class CustomerService {
 			return null;
 	}
 	
-	public Customers getCustInfo(Integer CIS) {
+	public static Customers getCustInfo(Integer CIS) {
 		
 		CustomerDao dao = new CustomerDao();
 		return dao.getCustByCIS(CIS);
