@@ -17,7 +17,7 @@ import com.OnlineBanking.services.CustomerService;
 
 //-- CLASS URL - http://18.220.194.122:8085/OnlineBankingSystem/rest/customer
 @Path("/customer")
-public class CustomerApi {
+public class CustomerAPI {
 	
 	//-- API url for testing
 	//-- GET - http://18.220.194.122:8085/OnlineBankingSystem/rest/customer/get/all
