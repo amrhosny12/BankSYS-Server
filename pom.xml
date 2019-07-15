@@ -13,6 +13,14 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
   
+ <!--  <repositories>
+  	<repository>
+	    <id>in-project</id>
+	    <name>In Project Repo</name>
+	    <url>file://${project.basedir}/libs</url>
+	</repository>
+  </repositories> -->
+ 
   <dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -34,19 +42,20 @@
 			    <scope>provided</scope>
 			</dependency>
 			
-		<!-- <dependency>
+		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc7</artifactId>
 			<version>12.1.0</version>
-		</dependency>  -->
+		</dependency>  
 		
-		 <dependency>
+		<!--  <dependency>
 		    <groupId>com.oracle</groupId>
 		    <artifactId>ojdbc7</artifactId>
 		    <version>12.1.0</version>
 		    <scope>system</scope>
 		    <systemPath>${project.basedir}/lib/ojdbc7.jar</systemPath>
-	  	</dependency> 
+	  	</dependency>  -->
+	  	
 		
 		<dependency>
 			<groupId>org.hibernate</groupId>
