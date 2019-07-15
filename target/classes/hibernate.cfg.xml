@@ -39,7 +39,7 @@
 		
 		
 		<!-- <mapping resource="cbay.hbm.xml"/> -->
-		<mapping class="com.Customers"/>
+		<mapping class="com.OnlineBanking.Customers"/>
 		<mapping class="com.OnlineBanking.Accounts"/>
 		<mapping class="com.OnlineBanking.Transactions"/>
 		<mapping class="com.OnlineBanking.Alerts"/>
