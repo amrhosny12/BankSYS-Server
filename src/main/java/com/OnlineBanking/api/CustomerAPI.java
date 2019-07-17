@@ -20,7 +20,7 @@ import com.OnlineBanking.services.CustomerService;
 public class CustomerAPI {
 	
 	//-- API url for testing
-	//-- GET - http://18.220.194.122:8085/OnlineBankingSystem/rest/customer/get/all
+	//-- GET - http://18.221.148.153:8082/OnlineBankingSystem/rest/customer/get/all
 	@GET
 	@Path("/get/all")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -29,7 +29,7 @@ public class CustomerAPI {
 	}
 
 	//-- API url for testing
-	//-- GET - http://18.220.194.122:8085/OnlineBankingSystem/rest/customer/get/{ssn}
+	//-- GET - http://18.221.148.153:8082/OnlineBankingSystem/rest/customer/get/{ssn}
 	@GET
 	@Path("/get/{ssn}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -38,7 +38,7 @@ public class CustomerAPI {
 	}
 	
 	//-- API url for testing
-	//-- GET - http://18.220.194.122:8085/OnlineBankingSystem/rest/customer/get/{username}/{pw}	
+	//-- GET - http://18.221.148.153:8082/OnlineBankingSystem/rest/customer/get/{username}/{pw}	
 	@GET
 	@Path("/get/{username}/{pw}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -49,7 +49,7 @@ public class CustomerAPI {
 	}
 	
 	//-- API url for testing
-	//-- POST - http://18.220.194.122:8085/OnlineBankingSystem/rest/customer/post
+	//-- POST - http://18.221.148.153:8082/OnlineBankingSystem/rest/customer/post
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)

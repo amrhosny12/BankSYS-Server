@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping> 
+	
+	<class name="com.OnlineBanking.beans.Customers" table="CUSTOMERS">
+		<meta attribute="class-description">
+			All Customers Table
+		</meta>
+		
+		<id name="id" type="int" column="CIS">
+			<generator class="native">
+				<param name="sequence">CIS_SEQ</param>
+			</generator>
+		</id>
+		
+		<property name="FirstName" column="FirstName" type="string" ></property>
+		<property name="LastName" column="LastName" type="string" ></property>
+		<property name="UserType" column="UserType" type="string" ></property>		
+		<property name="UserName" column="UserName" type="string" ></property>
+		<property name="Password" column="PW" type="string"></property>
+		<property name="UserType" column="UserType" type="string" ></property>
+		<property name="SSN" column="SSN" type="int" ></property>
+		<property name="Email" column="Email" type="string"></property>
+		<property name="Phone" column="Phone" type="string"></property>
+		<property name="Address" column="Address" type="string"></property>
+		<property name="DOB" column="DOB" type="string"></property>
+
+		
+	</class>
+	
+   
+
+	</hibernate-mapping>

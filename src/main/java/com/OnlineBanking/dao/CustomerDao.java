@@ -126,7 +126,7 @@ public class CustomerDao {
 		
 		try {
 			tx = session.beginTransaction();
-			AllCust = session.createQuery("FROM CUSTOMERS").list();
+			AllCust = session.createQuery("FROM Customers").list();
 			
 			for(Customers cust : AllCust) {
 				if(cust.getUserName().equals(userName) && cust.getPassword().equals(pw))
@@ -155,7 +155,7 @@ public class CustomerDao {
 		
 		try{
 			tx = session.beginTransaction();
-			AllCust = session.createQuery("FROM CUSTOMERS").list();
+			AllCust = session.createQuery("FROM Customers").list();
 			return AllCust;
 		
 		}catch(HibernateException e) {

@@ -2,11 +2,15 @@
 package com.OnlineBanking.beans;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="CUSTOMERS")
 public class Customers {
 	
 	@Id
@@ -24,7 +28,7 @@ public class Customers {
 	@Column(name="UserName")
 	private String UserName;
 	
-	@Column(name="Password")
+	@Column(name="PW")
 	private String Password;
 	
 	@Column(name="UserType")
