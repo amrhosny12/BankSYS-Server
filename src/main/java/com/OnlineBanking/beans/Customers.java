@@ -49,6 +49,8 @@ public class Customers {
 	@Column(name="DOB")
 	private String DOB;
 	
+	public Customers() {}
+	
 	public Customers(Integer cis, String firstName, String lastName, String userName, String password, String userType, Integer ssn, 
 			String phone, String email, String address, String dob) {
 		super();
