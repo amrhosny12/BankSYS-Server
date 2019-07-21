@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-  <display-name>Banking_Application</display-name>
+  <display-name>BankSYS_Server</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -9,37 +9,33 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
-  <servlet-name>ClientAPI</servlet-name>
-  <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-  <init-param>
-  <param-name>jersey.config.server.provider.packages</param-name>
-  <param-value>com.OnlineBanking.api</param-value>
-  </init-param>
-  <load-on-startup>1</load-on-startup>    
+    <servlet-name>ClientAPI</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>com.OnlineBanking.api</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
   </servlet>
-
   <servlet-mapping>
     <servlet-name>ClientAPI</servlet-name>
     <url-pattern>/rest/*</url-pattern>
-  </servlet-mapping> 
-  
+  </servlet-mapping>
   <filter>
-  <filter-name>corsFilter</filter-name>
-  <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
-  <init-param>
-  <param-name>cors.allowed.origins</param-name>
-  <param-value>http://localhost:4200, http://18.221.148.153:8082</param-value>
-  </init-param>
-  <init-param>
-  <param-name>cors.allowed.methods</param-name>
-  <param-value>GET, POST, PUT, DELETE, OPTIONS, HEAD</param-value>
-  </init-param>
+    <filter-name>corsFilter</filter-name>
+    <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+    <init-param>
+      <param-name>cors.allowed.origins</param-name>
+      <param-value>http://localhost:4200, http://18.221.148.153:8082</param-value>
+    </init-param>
+    <init-param>
+      <param-name>cors.allowed.methods</param-name>
+      <param-value>GET, POST, PUT, DELETE, OPTIONS, HEAD</param-value>
+    </init-param>
   </filter>
-  
   <filter-mapping>
-  <filter-name>corsFilter</filter-name>
-  <url-pattern>/*</url-pattern>
+    <filter-name>corsFilter</filter-name>
+    <url-pattern>/*</url-pattern>
   </filter-mapping>
 </web-app>
