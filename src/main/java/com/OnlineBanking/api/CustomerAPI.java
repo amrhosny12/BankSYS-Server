@@ -15,7 +15,7 @@ import com.OnlineBanking.beans.Customers;
 import com.OnlineBanking.services.CustomerService;
 
 
-//-- CLASS URL - http://18.220.194.122:8085/OnlineBankingSystem/rest/customer
+//-- CLASS URL - http://18.221.148.153:8082/OnlineBankingSystem/rest/customer
 @Path("/customer")
 public class CustomerAPI {
 	
@@ -38,7 +38,8 @@ public class CustomerAPI {
 	}
 	
 	//-- API url for testing
-	//-- GET - http://18.221.148.153:8082/OnlineBankingSystem/rest/customer/get/{username}/{pw}	
+	//-- GET - http://18.221.148.153:8082/OnlineBankingSystem/rest/customer/get/{username}/{pw}
+	// -- http://18.221.148.153:8082/OnlineBankingSystem/rest/customer/get/AHOSNY12/NEWPASSWORD12
 	@GET
 	@Path("/get/{username}/{pw}")
 	@Produces(MediaType.APPLICATION_JSON)
