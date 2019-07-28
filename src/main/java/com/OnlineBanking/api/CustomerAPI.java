@@ -27,6 +27,15 @@ public class CustomerAPI {
 	public List<Customers> getAllCust(){
 		return CustomerService.getAllCust();
 	}
+	
+	//-- API url for testing
+	//-- GET - http://18.221.148.153:8082/OnlineBankingSystem/rest/customer/get/profile/{cis}
+	@GET
+	@Path("get/profile/{cis}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Customers getCustByCIS(@PathParam("cis") int cis) {
+		return CustomerService.getCustByCIS(cis);
+	}
 
 	//-- API url for testing
 	//-- GET - http://18.221.148.153:8082/OnlineBankingSystem/rest/customer/get/{ssn}
@@ -39,7 +48,6 @@ public class CustomerAPI {
 	
 	//-- API url for testing
 	//-- GET - http://18.221.148.153:8082/OnlineBankingSystem/rest/customer/get/{username}/{pw}
-	// -- http://18.221.148.153:8082/OnlineBankingSystem/rest/customer/get/AHOSNY12/NEWPASSWORD12
 	@GET
 	@Path("/get/{username}/{pw}")
 	@Produces(MediaType.APPLICATION_JSON)

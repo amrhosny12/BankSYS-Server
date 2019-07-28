@@ -56,5 +56,10 @@ public class CustomerService {
 		return dao.getCustBySSN(ssn);
 	}
 	
+	public static Customers getCustByCIS (Integer cis) {
+		CustomerDao dao = new CustomerDao();
+		return dao.getCustByCIS(cis);
+	}
+	
 	
 }
