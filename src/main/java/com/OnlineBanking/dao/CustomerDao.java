@@ -7,7 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.OnlineBanking.beans.Customers;
+import com.OnlineBanking.entities.Customers;
 import com.OnlineBanking.util.HibernateUtil;
 
 public class CustomerDao {
@@ -15,8 +15,7 @@ public class CustomerDao {
 
 	public void insertCustomer(Customers cust) {
 		
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
+		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		
 		try {
@@ -41,8 +40,7 @@ public class CustomerDao {
 	public Customers getCustByCIS(Integer CIS) {
 		
 		Customers cust = null;
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
+		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		
 		try {
@@ -66,15 +64,20 @@ public class CustomerDao {
 	
 	public Customers getCustByUserId(String userId) {
 		
-		Customers cust = null;
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
+		List<Customers> AllCust = null;
+		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		
 		try {
 			tx = session.beginTransaction();
 			
-			cust = (Customers)session.get(Customers.class, userId);
+			AllCust = session.createQuery("FROM Customers").list();
+			
+			for(Customers cust : AllCust) {
+				if(cust.getUserName().equals(userId))
+					return cust;
+			}
+			
 			tx.commit();
 		
 		}catch(HibernateException e) {
@@ -86,16 +89,14 @@ public class CustomerDao {
 		}finally {
 			session.close();
 		}
-		return cust;
-		
+		return null;
 	}
 		
 
 	public Customers getCustBySSN(Integer ssn) {
 		
 		Customers cust = null;
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
+		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		
 		try {
@@ -117,11 +118,10 @@ public class CustomerDao {
 	}
 	
 	
-	public Integer loginCust(String userName, String pw) {
+	public Customers loginCust(String username, String pw) {
 		
 		List <Customers> AllCust = null;
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
+		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		
 		try {
@@ -129,8 +129,8 @@ public class CustomerDao {
 			AllCust = session.createQuery("FROM Customers").list();
 			
 			for(Customers cust : AllCust) {
-				if(cust.getUserName().equals(userName) && cust.getPassword().equals(pw))
-					return cust.getCIS();
+				if(cust.getUserName().equals(username) && cust.getPassword().equals(pw))
+					return cust;
 			}
 			
 		}catch(HibernateException e) {
@@ -145,12 +145,10 @@ public class CustomerDao {
 		return null;
 	}
 	
-	
 	public List<Customers> getAllCust(){
 		
 		List<Customers> AllCust = null;
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
+		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		
 		try{
@@ -164,6 +162,34 @@ public class CustomerDao {
 			}
 			e.printStackTrace();
 		
+		}finally {
+			session.close();
+		}
+		
+		return null;
+	}
+
+	public Integer getCISByCreds(String username, String pw) {
+		
+		List<Customers> AllCust = null;
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		
+		try {
+			tx = session.beginTransaction();
+			AllCust = session.createQuery("FROM Customers").list();
+			
+			for(Customers cust : AllCust) {
+				if(cust.getUserName().equals(username) && cust.getPassword().toLowerCase().equals(pw.toLowerCase()))
+					return cust.getCIS();
+			}
+			
+		}catch(HibernateException e) {
+			if(tx!=null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+			
 		}finally {
 			session.close();
 		}

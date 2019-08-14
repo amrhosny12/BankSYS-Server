@@ -1,4 +1,4 @@
-package com.OnlineBanking.beans;
+package com.OnlineBanking.entities;
 
 import java.util.Calendar;
 

@@ -1,5 +1,7 @@
 
-package com.OnlineBanking.beans;
+package com.OnlineBanking.entities;
+
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name="CUSTOMERS")
@@ -53,7 +58,7 @@ public class Customers {
 	
 	public Customers(Integer cis, String firstName, String lastName, String userName, String password, String userType, Integer ssn, 
 			String phone, String email, String address, String dob) {
-		super();
+		
 		CIS = cis;
 		FirstName = firstName;
 		LastName = lastName;
@@ -71,7 +76,7 @@ public class Customers {
 
 	public Customers(String firstName, String lastName, String userName, String password, String userType, Integer ssn,
 			String phone, String email) {
-		super();
+		
 		FirstName = firstName;
 		LastName = lastName;
 		UserName = userName;
@@ -81,10 +86,19 @@ public class Customers {
 		Phone = phone;
 		Email = email;
 	}
+	
+	public Customers(String firstName, String lastName, String userName, String password, String userType) {
+		FirstName = firstName;
+		LastName = lastName;
+		UserName = userName;
+		Password = password;
+		UserType = userType;
+		
+	}
 
 
 
-	public int getCIS() {
+	public Integer getCIS() {
 		return CIS;
 	}
 	public void setCIS(Integer cis) {
@@ -122,7 +136,7 @@ public class Customers {
 	public void setUserType(String userType) {
 		UserType = userType;
 	}
-	public int getSSN() {
+	public Integer getSSN() {
 		return SSN;
 	}
 	public void setSSN(Integer ssn) {

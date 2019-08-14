@@ -2,44 +2,33 @@ package com.OnlineBanking.services;
 
 import java.util.List;
 
-import com.OnlineBanking.beans.Customers;
+import org.apache.log4j.Logger;
+
+import com.OnlineBanking.api.CustomerAPI;
 import com.OnlineBanking.dao.CustomerDao;
+import com.OnlineBanking.entities.Customers;
 
 public class CustomerService {
 
-	public static Integer insertCustRT(String userName, String pw, String fn, String ln, Integer ssn, String phone, String email) {
-		
-		CustomerDao dao = new CustomerDao();
-		Customers cust = new Customers(fn, ln, userName, pw, "Retail", ssn, phone, email);
-		
-		dao.insertCustomer(cust);
-		if(dao.getCustByCIS(cust.getCIS()) != null)
-			return cust.getCIS();
-		else
-			return null;
-
-	}
+	final static Logger logger = Logger.getLogger(CustomerService.class);
 	
-	public static Integer insertCustSB(String userName, String pw, String fn, String ln, Integer ssn, String phone, String email) {
+	public static void insertCust(Customers cust) {
 		
 		CustomerDao dao = new CustomerDao();
-		Customers cust = new Customers(fn, ln, userName, pw, "SB", ssn, phone, email);
-		
 		dao.insertCustomer(cust);
-		if(dao.getCustByCIS(cust.getCIS()) != null)
-			return cust.getCIS();
-		else
-			return null;
+		//return cust.getCIS();
+
 	}
 	
 	public static Customers getCustInfo(Integer CIS) {
 		
 		CustomerDao dao = new CustomerDao();
+		logger.info("Service Here");
 		return dao.getCustByCIS(CIS);
 	}
 
 	
-	public static Integer loginCust(String userName, String pw) {
+	public static Customers loginCust(String userName, String pw) {
 		CustomerDao dao = new CustomerDao();
 		return dao.loginCust(userName, pw);
 	}
@@ -59,6 +48,11 @@ public class CustomerService {
 	public static Customers getCustByCIS (Integer cis) {
 		CustomerDao dao = new CustomerDao();
 		return dao.getCustByCIS(cis);
+	}
+
+	public static Integer getCISbyCreds(String username, String password) {
+		CustomerDao dao = new CustomerDao();
+		return dao.getCISByCreds(username, password);
 	}
 	
 	

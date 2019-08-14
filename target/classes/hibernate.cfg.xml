@@ -17,7 +17,7 @@
 		</property>
 		
 		<property name="hibernate.connection.username">
-			DB_Admin
+			DB_Admin 
 		</property>
 		
 		<property name="hibernate.connection.password">
@@ -28,7 +28,7 @@
 			5
 		</property>
 		
-		<property name="show_sql">
+		<property name="show_sql"> 
 			true
 		</property>
 		
@@ -38,11 +38,12 @@
 		
 		
 		<!-- <mapping resource="cbay.hbm.xml"/> -->
-		<mapping class="com.OnlineBanking.beans.Customers"/>
-		<mapping class="com.OnlineBanking.beans.Accounts"/>
-		<mapping class="com.OnlineBanking.beans.Transactions"/>
-		<mapping class="com.OnlineBanking.beans.Alerts"/>
-		<mapping class="com.OnlineBanking.beans.RSA"/>
+		<mapping class="com.OnlineBanking.entities.Customers"/>
+		<mapping class="com.OnlineBanking.entities.Accounts"/>
+		<mapping class="com.OnlineBanking.entities.Transactions"/>
+		<mapping class="com.OnlineBanking.entities.Alerts"/>
+		<mapping class="com.OnlineBanking.entities.RSA"/>
+		<mapping class="com.OnlineBanking.entities.Sessions"/>
 	
 		
 	</session-factory>

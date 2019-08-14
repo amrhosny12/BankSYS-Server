@@ -6,7 +6,7 @@
 
 <hibernate-mapping> 
 	
-	<class name="com.OnlineBanking.beans.Customers" table="CUSTOMERS">
+	<class name="com.OnlineBanking.entities.Customers" table="CUSTOMERS">
 		<meta attribute="class-description">
 			All Customers Table
 		</meta>
@@ -23,7 +23,7 @@
 		<property name="UserName" column="UserName" type="string" ></property>
 		<property name="Password" column="PW" type="string"></property>
 		<property name="UserType" column="UserType" type="string" ></property>
-		<property name="SSN" column="SSN" type="int" ></property>
+		<property name="SSN" column="SSN" type="integer" ></property>
 		<property name="Email" column="Email" type="string"></property>
 		<property name="Phone" column="Phone" type="string"></property>
 		<property name="Address" column="Address" type="string"></property>
