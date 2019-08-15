@@ -36,7 +36,9 @@ public class Sessions {
 	@Column(name="OpenSession")
 	private Integer OpenSession;
 
+	public Sessions() {}
 	
+
 	public Sessions(Integer sessionID, Integer cIS, String userName, String password, String jSessionID, String token,
 			Integer openSession) {
 

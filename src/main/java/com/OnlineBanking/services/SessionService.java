@@ -6,10 +6,12 @@ import com.OnlineBanking.entities.Sessions;
 public class SessionService {
 
 	SecurityUtil securityUtil = new SecurityUtil();
-	public void CreateSession(String JSessionID, String username, String password) {
+	
+	public void CreateSession(String JSessionID, String username, String password, String token) {
+		
 		SessionDao dao = new SessionDao();
 		Integer CIS = CustomerService.getCISbyCreds(username, password);
-		Sessions session = new Sessions(CIS, username, password, JSessionID, 1);
+		Sessions session = new Sessions(CIS, username, password, JSessionID, token, 1);
 		
 		dao.insertSession(session);
 		
@@ -19,6 +21,12 @@ public class SessionService {
 		
 		SessionDao dao = new SessionDao();
 		 dao.invaldiateSession(JSessionID);
+		
+	}
+
+	public String getEncryptedPW(String JSessionID) {
+		SessionDao dao = new SessionDao();
+		return dao.getPasswordByJSession(JSessionID);
 		
 	}
 

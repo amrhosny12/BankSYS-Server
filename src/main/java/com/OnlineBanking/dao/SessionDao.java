@@ -46,6 +46,7 @@ public class SessionDao {
 			tx = session.beginTransaction();
 			
 			s = (Sessions)session.get(Sessions.class, getSessionByJSID(JSessionID).getSessionID());
+			System.out.println(s.getJSessionID());
 			s.setOpenSession(0);
 			session.update(s);
 			tx.commit();
@@ -72,6 +73,33 @@ public class SessionDao {
 			for(Sessions s : AllSessions) {
 				if(s.getJSessionID().equals(jSessionID))
 					return s;
+			}
+			
+		}catch(HibernateException e) {
+			if (tx!=null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		
+		}finally {
+			session.close();
+		}
+		return null;
+	}
+
+	public String getPasswordByJSession(String jSessionID) {
+		
+		List <Sessions> AllSessions = null;
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		
+		try {
+			tx = session.beginTransaction();
+			AllSessions = session.createQuery("FROM Sessions").list();
+			
+			for(Sessions s : AllSessions) {
+				if(s.getJSessionID().equals(jSessionID))
+					return s.getPassword();
 			}
 			
 		}catch(HibernateException e) {

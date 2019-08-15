@@ -7,6 +7,8 @@ import java.net.URI;
 import java.util.List;
 
 import javax.json.JsonObject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -26,6 +28,7 @@ import com.OnlineBanking.config.Secure;
 import com.OnlineBanking.entities.Customers;
 import com.OnlineBanking.services.CustomerService;
 import com.OnlineBanking.services.SecurityUtil;
+import com.OnlineBanking.services.SessionService;
 
 //-- CLASS URL - http://18.221.148.153:8082/OnlineBankingSystem/rest/customer
 
@@ -37,9 +40,11 @@ public class CustomerAPI {
 	@Context
 	private UriInfo uriInfo;
 	
+	@Context 
+	HttpServletRequest request;
 	
 	private SecurityUtil securityUtil = new SecurityUtil();
-	
+	private SessionService sessionService = new SessionService();
 	private AuthTokenGenerator tokenGenerator = new AuthTokenGenerator();
 	
 	// Look into encoding user password going into the database withing hash code (lecture 92 suggestion)
@@ -86,9 +91,12 @@ public class CustomerAPI {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public Response loginCust(@FormParam("username") String username, @FormParam("pw") String pw) {
 		try {
-			authenticateUser(username, pw);
+			authenticateUser(username, securityUtil.encodeText(pw));
 			String token = tokenGenerator.getToken(username, pw, uriInfo);
-			System.out.println(securityUtil.encodeText(pw));
+			HttpSession session = request.getSession(true);
+			session.setAttribute("username", username);
+			session.setAttribute("password", securityUtil.encodeText(pw));
+			sessionService.CreateSession(session.getId(), (String)session.getAttribute("username"), (String)session.getAttribute("password"), token);
 			return Response.ok().header(AUTHORIZATION, "Bearer " + token).build();
 			
 		}catch (Exception e) {

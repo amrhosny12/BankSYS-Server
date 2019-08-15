@@ -21,6 +21,7 @@ public class DeleteSession extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		System.out.println(request.getSession().getId());
 		sessionService.invaldiateSession(request.getSession().getId());
 		request.getSession().invalidate();
 	}
